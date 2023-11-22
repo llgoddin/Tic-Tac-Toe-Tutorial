@@ -47,6 +47,23 @@ def print_board(board):
 
         print('\n' + '-' * 12)
 
+def menu():
+    while True:
+        print('Welcome To Tic-Tac-Toe!')
+        print('Enter a number to choose a game type.')
+        print('1 - Single Player Game')
+        print('2 - Two Player Game')
+        user_input = input('Game Type: ')
+
+        if user_input == '1':
+            print('Starting Single Player Game...')
+            return 1
+        elif user_input == '2':
+            print('Starting Two Player Game...')
+            return 2
+        else:
+            print('Invalid Input!')
+
 rows = 3
 cols = 3
 
@@ -54,8 +71,15 @@ board = [['' for _ in range(cols)] for _ in range(rows)]
 
 symbol = 'X'
 running = True
+in_menu = True
+game_type = 0
 
 while running:
+
+    if in_menu:
+        game_type = menu()
+        in_menu = False
+
     print_board(board)
     coords = get_input()
 
